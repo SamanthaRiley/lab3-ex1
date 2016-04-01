@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+import smtplib
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+
+fromaddr = 'samanthariley043@gmail.com'
+toaddrs= 'samanthariley043@gmail.com'
+
+message= MIMEMultipart()
+message['fromname']= fromaddr
+message['toname']= toaddrs
+message['Subject']= "Email"
+
+message = """From: {fromaddr} <{samanthariley043@gmail.com}>
+To: {toaddr} <{samanthariley043@gmail.com}>
+Subject: {Email}
+
+{}
+"""
+
+def messagetosend(
+                             fromname,
+                             fromaddr,
+                             toname,
+                             toaddrs,
+                             Subject,
+                             message):
+
+# Credentials (if needed)
+    username = 'samanthariley043@gmail.com'
+    password = '{xxxx}'
+    
+    
+        # The actual mail send
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(fromaddr, toaddrs, messagetosend)
+    server.quit()
